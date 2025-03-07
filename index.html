@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta de Amor</title>
+    <style>
+        body {
+            background: url('/imagenes/otro.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+        }
+        .open-text {
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 12px 24px;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: background 0.3s ease;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .open-text:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+        .envelope {
+            position: relative;
+            width: 320px;
+            height: 200px;
+            background: #e74c3c;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: #c0392b;
+            clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+            transition: transform 0.5s ease;
+            z-index: 2;
+        }
+        .letter {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 280px;
+            background: #fff;
+            padding: 20px;
+            text-align: center;
+            font-family: 'Georgia', serif;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translate(-50%, -50%) scale(0.8);
+            z-index: 1;
+        }
+        .envelope.open .flap {
+            transform: translateY(-100px);
+        }
+        .envelope.open .letter {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        @media (max-width: 600px) {
+            .letter {
+                font-size: 16px;
+                padding: 15px;
+            }
+            .open-text {
+                font-size: 18px;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="open-text" onclick="abrirCarta()">Ábrela, gordita ❤️</div>
+        <div class="envelope" onclick="abrirCarta()">
+            <div class="flap"></div>
+            <div class="letter">
+                <p style="font-size: 18px; font-weight: bold;">Amor,</p>
+                <p style="font-size: 18px;">Gracias por hacer mi mundo más hermoso. Te quiero mucha corazon y me encantas ❤️</p>
+                <p style="font-size: 18px; font-weight: bold;">Con amor, tu persona favorita vladito</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function abrirCarta() {
+            let envelope = document.querySelector('.envelope');
+            envelope.classList.add('open');
+        }
+    </script>
+</body>
+</html>
